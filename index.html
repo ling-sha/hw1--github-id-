@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <title> Account registration form page </title>
+  <meta charset="utf-8">
+  <meta name="description" content="Account Registration form">
+  <meta name="keywords" content="HTML,JavaScript">
+  <meta name="author" content="Ling Sha">
+</head>
+
+<body onload:"initTimeStamp()">
+  <h1>Account registration form </h1>
+  <form onsubmit="return validateForm()" id="myForm" method=("GET") action="formProcessor.html" >
+    <p><B>Account Name: </B><em>upper and lower letters only or with numbers, start with letters </em>
+    <input type="text" name="account_name" placeholder="Account name" pattern="[a-zA-Z0-9]+"required></p>
+    <br>
+
+    <p><B>Display Name(optional) : </B><em>upper and lower letters only or with numbers, start with letters </em>
+    <input type="text" name="display_name" placeholder="Display name(optional) " pattern="[a-zA-Z0-9]+"required></p>
+    <br>
+
+    <p><B>Email Address: </B><em>e.g.abc@gmail.com:</em>
+    <input type="email" name="email_address" placeholder="Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required></p>
+    <br>
+
+    <p><B>Phone Number: </B><em>e.g.123-123-1234</em>
+    <input type="text" name="phone_number" placeholder="phone number" pattern="\d{3}-\d{3}-\d{4}" required></p>
+    <br/>
+
+    <p><B>Date of birth:</B> <em>e.g.mm/dd/yyyy</em>
+    <input type="date" name="dateOfBirth" format="mm/dd/yyyy" id="dateOfBirth_id"required></p>
+    <br>
+
+    <p><B>Zipcode:</B><em>12345</em>
+    <input type="text" name="zipcode" placeholder="Zipcode" required></p>
+    <br>
+
+    <p><B>Password:</B>
+    <input type="password" name="passwords" placeholder="Password" required></p>
+    <br>
+
+    <p><B>Password confirmation:</B>
+    <input type="password" name="password_confirmation" placeholder="Password confirmation" required></p>
+    <br>
+
+    <input type="submit" value="submit">
+    <input type="reset" value="Clear">
+    <input type="hidden" name="time_stamp" id="timestamp_id">
+    </form>
+
+</body>
+
+
+    <script type="text/javascript">
+        function initTimeStamp(){
+          var ts = document.getElementById("timestamp_id")
+          ts.value = new Date().getTime();
+
+        }
+      function validateForm(){
+            var password1 = document.getElementsByName('password');
+            var password2=document.getElementsByName('password_confirmation');
+            var dateOfBirth = document.getElementById("dateOfBirth_id").value
+            var dateOfBirth=new Date();
+            var today=new Date();
+            var yearspassed=today.getFullYear()-birthdate.getFullYear();
+            var monthspassed=today.getMonth()-birthdate.getMonth();
+            var dayspassed=today.getDate()-birthdate.getDate();
+            if (value.password1!=value.password2){
+              alert("passwords don't match.");
+              return false;
+            }
+
+            else if (!(yearspassed >18||yearspassed==18&&monthspassed>0|| yearspassed==18&&monthspassed==0&&dayspassed>=0)){
+              alert("Only individuals 18 years of age or older on the day of registration are allowed to register!");
+              return false;
+            }
+
+            return true;
+        }
+    </script>
+</html>
